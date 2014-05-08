@@ -25,7 +25,7 @@ set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets}
 set :keep_releases, 5
 
 # rvm
-set :rvm_ruby_version, '2.1.1'
+# set :rvm_ruby_version, '2.1.1'
 
 # SSHKit.config.command_map[:rake]  = "bundle exec rake"
 # SSHKit.config.command_map[:rails] = "bundle exec rails"

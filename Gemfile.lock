@@ -380,7 +380,7 @@ DEPENDENCIES
   childprocess (= 0.3.6)
   ckeditor (= 4.0.10)
   coffee-rails (~> 4.0.0)
-  devise
+  devise (= 3.2.4)
   devise-encryptable (= 0.1.2)
   email_spec (= 1.5.0)
   factory_girl_rails (= 4.2.1)
