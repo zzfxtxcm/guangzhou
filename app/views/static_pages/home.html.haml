@@ -235,7 +235,7 @@
           .tab-pane.fade.active.in
             - Information.where(information_type_id: 5).limit(1).each do |information|
               %h3{style: "margin:0"}
-                = link_to information.title.first(32), information ,:class => "cl",:style => "font-size:24px", target: "_blank"
+                = link_to information.title.first(14), information ,:class => "cl",:style => "font-size:24px", target: "_blank"
               %p{style: "color:#999"} #{information.source} #{information.created_at.strftime("%Y-%m-%d")}
               %div{style: "margin:20px 0px 20px 0px; border-bottom:1px dotted #CCC; height:90px"}
                 %p
