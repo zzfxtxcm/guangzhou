@@ -25,6 +25,8 @@ class NewHomesController < ApplicationController
   end
 
   def show
+    @areas = Area.all
+    @sections = Section.all
     @new_home = NewHome.find(params[:id])
     @apartments = Apartment.all
     @intention_to_register = IntentionToRegister.new
@@ -32,8 +34,26 @@ class NewHomesController < ApplicationController
                        .order('created_at DESC')
                        .paginate(page: params[:page])
                        .per_page(9)
-    @albums = Album.order('created_at DESC')
-                  .paginate(page: params[:page])
-                  .per_page(9)
+
+    @albums1=Album.where(new_home_id: params[:id] ,album_class_id:1)
+    @albums2=Album.where(new_home_id: params[:id] ,album_class_id:2)
+    @albums3=Album.where(new_home_id: params[:id] ,album_class_id:3)
+    @albums4=Album.where(new_home_id: params[:id] ,album_class_id:4)
+    @albums5=Album.where(new_home_id: params[:id] ,album_class_id:5)
+    @albums6=Album.where(new_home_id: params[:id] ,album_class_id:6)
+    @albums7=Album.where(new_home_id: params[:id] ,album_class_id:7)
+    @albums8=Album.where(new_home_id: params[:id] ,album_class_id:8)
+    if params[:pic]
+      @albums = Album.where(new_home_id: params[:id],album_class_id:params[:pic])
+                   .order('created_at DESC')
+                   .paginate(page: params[:page])
+                   .per_page(9)
+    else
+      @albums = Album.where(new_home_id: params[:id])
+                   .order('created_at DESC')
+                   .paginate(page: params[:page])
+                   .per_page(9)
+    end
+
   end
 end

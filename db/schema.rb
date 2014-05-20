@@ -54,14 +54,22 @@ ActiveRecord::Schema.define(version: 20140520111803) do
   add_index "admin_users", ["email"], name: "index_admin_users_on_email", unique: true
   add_index "admin_users", ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true
 
+  create_table "album_classes", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "albums", force: true do |t|
     t.string   "url"
     t.string   "name"
     t.integer  "new_home_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "album_class_id"
   end
 
+  add_index "albums", ["album_class_id"], name: "index_albums_on_album_class_id"
   add_index "albums", ["new_home_id"], name: "index_albums_on_new_home_id"
 
   create_table "apartments", force: true do |t|

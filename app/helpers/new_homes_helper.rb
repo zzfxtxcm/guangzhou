@@ -8,7 +8,7 @@ module NewHomesHelper
         result << [PinYin.of_string(item.name)[0][0].upcase.to_s + " - " + item.name, item.id]
       end
     end
-    
+
     result.sort
   end
 
