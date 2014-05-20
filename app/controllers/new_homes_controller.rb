@@ -27,6 +27,7 @@ class NewHomesController < ApplicationController
   def show
     @new_home = NewHome.find(params[:id])
     @apartments = Apartment.all
+    @intention_to_register = IntentionToRegister.new
     @news = Information.where(new_home_id: params[:id])
                        .order('created_at DESC')
                        .paginate(page: params[:page])
