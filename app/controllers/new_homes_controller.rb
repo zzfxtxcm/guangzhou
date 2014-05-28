@@ -10,6 +10,7 @@ class NewHomesController < ApplicationController
     @keyword = Sunspot.search(NewHome) do
       keywords params[:keyword]
       with(:area_id).equal_to(params[:area_id]) if params[:area_id].present?
+      with(:status_id).equal_to(params[:status_id]) if params[:status_id].present?
       with(:section_id).equal_to(params[:section_id]) if params[:section_id].present?
       with(:area_range_id).equal_to(params[:area_range_id]) if params[:area_range_id].present?
       with(:property_type_id).equal_to(params[:property_type_id]) if params[:property_type_id].present?
@@ -31,7 +32,7 @@ class NewHomesController < ApplicationController
     @areas = Area.all
     @sections = Section.all
     @new_home = NewHome.find(params[:id])
-    @apartments = Apartment.all
+    @apartments = Apartment.where(new_home_id: params[:id])
     @intention_to_register = IntentionToRegister.new
     @news = Information.where(new_home_id: params[:id])
                        .order('created_at DESC')
