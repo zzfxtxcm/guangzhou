@@ -7,6 +7,18 @@ class NewHomesController < ApplicationController
                         .paginate(page: params[:page])
                         .per_page(5)
 
+    @dummy_data = DummyData.where("today_hit>=1").order("created_at desc")
+    @list = []
+    @dummy_data.each do |dummy|
+      @list << [dummy.new_home_id]
+     end 
+
+    @want = DummyData.where("want>=1 ").order("created_at asc")
+    @want_id = []
+    @want.each do |want|
+      @want_id << [want.new_home_id]
+     end
+
     @keyword = Sunspot.search(NewHome) do
       per_page = params[:per_page]
       if per_page.blank?
@@ -46,19 +58,19 @@ class NewHomesController < ApplicationController
                        .per_page(15)
     if IntentionToRegister.where(new_home_id: params[:id]).blank?
       (rand(9) + 1).times do
-        IntentionToRegister.create!(new_home_id: params[:id]) 
+        IntentionToRegister.create!(new_home_id: params[:id],tel: 00)
       end
     end
 
-    DummyData.create!(new_home_id: params[:id],today_hit: 1) 
+    DummyData.create!(new_home_id: params[:id],today_hit: 1)
     (rand(49) + 1).times do
-      DummyData.create!(new_home_id: params[:id],today_hit: 2) 
+      DummyData.create!(new_home_id: params[:id],today_hit: 2)
     end
     (rand(2) + 1).times do
-      DummyData.create!(new_home_id: params[:id],read: 2) 
+      DummyData.create!(new_home_id: params[:id],read: 2)
     end
     (rand(1) + 1).times do
-      DummyData.create!(new_home_id: params[:id],want: 2) 
+      DummyData.create!(new_home_id: params[:id],want: 2)
     end
 
     @today_hit = DummyData.where(new_home_id: params[:id],today_hit:1..2,created_at: Time.now.beginning_of_day..Time.now.end_of_day).count
