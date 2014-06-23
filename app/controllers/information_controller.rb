@@ -22,7 +22,7 @@ class InformationController < ApplicationController
         if per_page.blank?
           per_page = 10
         else
-          per_page = params[:per_page]
+          per_page = para34ms[:per_page]
         end
         keywords params[:keyword]
         with(:information_type_id).equal_to(params[:information_type_id]) if params[:information_type_id].present?
