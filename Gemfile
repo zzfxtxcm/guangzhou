@@ -26,7 +26,7 @@ gem 'ancestry', '2.0.0'
 gem 'simple_form', '3.0.2'
 
 # 编辑器
-gem 'ckeditor', '4.0.10'
+gem 'ckeditor', '4.0.11'
 
 # 图片上传
 gem 'carrierwave', '0.10.0'
