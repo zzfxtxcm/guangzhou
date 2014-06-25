@@ -1,7 +1,7 @@
 module ApplicationHelper
 
   def full_title(page_title)
-    base_title = "广州馨窝网gz.xinwowang.com广州房地产团购、电商第一门户"
+    base_title = "广州馨窝网gz.xinwowang.com广州房地产团购、电商第一门户|广州房产网,广州买房，广州新房，广州房价，广州楼盘，广州二手房，广州租房"
     if page_title.empty?
       base_title
     else
@@ -26,7 +26,7 @@ module ApplicationHelper
       page_desc
     end
   end
-  
+
   MOBILE_USER_AGENTS =  'palm|blackberry|nokia|phone|midp|mobi|symbian|chtml|ericsson|minimo|' +
                         'audiovox|motorola|samsung|telit|upg1|windows ce|ucweb|astel|plucker|' +
                         'x320|x240|j2me|sgh|portable|sprint|docomo|kddi|softbank|android|mmp|' +
